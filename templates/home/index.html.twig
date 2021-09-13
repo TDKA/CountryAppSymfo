@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+    <div class="container"> 
+
+    <h2> HI </h2>
+
+    <form class="form-group w-50">
+    
+        <input class="form-control" placeholder="Add something" name="message">
+        
+    
+        <button type="submit" class="btn btn-primary"> Send </button>
+
+    </form>
+        <h2>      {{message}}     </h2>
+
+        <a href="{{ path("country") }}" class="btn btn-primary">Go to countries </a>
+
+    
+    </div>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CountryController!{% endblock %}
+
+{% block body %}
+
+
+    <div class="container">
+
+    <h1 class="text-center my-5">Countries :</h1>
+
+        <form class="d-flex" action="{{path('showCountry')}}" method="POST">
+            <input class="form-control me-2" type="text"  name="search">
+            <input class="btn btn-outline-success" type="submit" value="Search">
+        </form>
+
+    <div class="row">
+
+        {% for country in countries %}
+        
+        <div class="col-md-3 mt-3">
+            <div class="card" style="width: 18rem;">
+                <img src=" {{ country.flag }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Country: {{country.name}} </h5>
+                    <p class="card-text"> Capital: {{country.capital}}</p>
+                    <a href="{{ path("showCountry", {name: country.name} )}}" class="btn btn-primary">Check this country</a>
+                </div>
+            </div>
+        </div>
+        
+        {% endfor %}
+    </div>
+
+    </div>
+
+    {# display navigation #}
+<div class="navigation d-flex pagination justify-content-center">
+        {{ knp_pagination_render(countries, '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig') }}
+    </div>
+
+{% endblock %}

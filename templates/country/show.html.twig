@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CountryController!{% endblock %}
+
+{% block body %}
+   
+
+     {# {{dump(theCountry.languages)}} #}
+    <div class="container">
+
+    <ul>
+  
+    <div class="card mx-auto" style="width: 20rem;">
+  <img src=" {{ theCountry.flag }}"class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-text fw-bold">Country: {{theCountry.name|upper}} </h5>
+    <p class="card-text fw-bold">Capital: {{theCountry.capital}}</p>
+      <p class="card-text fw-bold">Region: {{theCountry.region}}</p>
+         <p class="card-text fw-bold">Population: " {{theCountry.population}} "</p>
+
+    <ul class="card-text">
+        <h5>  Languages:  </h5>
+    {% for key, language in theCountry.languages %}
+        <li class="card-text fw-bold">{{ language.name }}</li>
+    {% endfor %}
+    </ul>
+  
+    
+       <ul class="card-text mt-2">
+       <h5> Currencies:  </h5>
+    {% for key, currency in theCountry.currencies %}
+        <li class="card-text fw-bold">
+     {{ currency.name }} <br>
+       Code:  {{ currency.code }}<br>
+      Symbol:  {{ currency.symbol }}
+        </li>
+ 
+    {% endfor %}
+    </ul>
+
+    
+    
+  </div>
+
+{# Weather #}
+
+<div class="card mb-3">
+
+  <div class="card-body">
+
+     {% for key, meteo in theWeather.weather %}
+        <h5 class="card-title">The weather is  {{ meteo.main }} </h5>
+        <p class="card-text">Description of the weather: {{meteo.description}}</p>
+
+     {% endfor %}
+
+    {# {% for key, main in theWeather.main %}
+     <p class="card-text">Temperature: {{main.temp}}</p>
+    <p class="card-text">Feels like: {{main.feels_like}}</p>
+    <p class="card-text">Feels like: {{main.temp_max}}</p>
+    <p class="card-text">Humidity {{main.humidity}}</p> 
+    {% endfor %} #}
+  
+  </div>
+</div>
+
+</div>
+
+
+
+
+    
+
+        
+
+{% endblock %}
